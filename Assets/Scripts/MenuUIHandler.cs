@@ -20,18 +20,12 @@ public class MenuUIHandler : MonoBehaviour
 	void Start()
 	{
 		// userName = GameObject.Find("NameInput").GetComponent<InputField>();
-		if(ScoreManager.Instance.BestScore >= 0 && ScoreManager.Instance.BestScoreUserName != "")
-		{
-			BestScoreText.text = "Best Score : " + ScoreManager.Instance.BestScoreUserName + " : " + ScoreManager.Instance.BestScore;
-		}
-		else
-		{
-			BestScoreText.text = "Best Score : N/A";
-		}
+		ScoreManager.Instance.LoadScore();
+		BestScoreText.text = "Best Score : " + ScoreManager.Instance.BestScoreUserName + " : " + ScoreManager.Instance.BestScore;
 	}
 	public void StartGame()
 	{
-		Debug.Log("start : " + userName.text);
+		// Debug.Log("start : " + userName.text);
 		ScoreManager.Instance.SetCurrentUserName(userName.text);
 		SceneManager.LoadScene(1);
 	}
@@ -39,6 +33,7 @@ public class MenuUIHandler : MonoBehaviour
 
 	public void ExitGame()
 	{
+		ScoreManager.Instance.SaveScore();
 #if UNITY_EDITOR
 		EditorApplication.ExitPlaymode();
 #else

@@ -46,7 +46,6 @@ public class ScoreManager : MonoBehaviour
     // Save method
     public void SaveScore()
     {
-		Debug.Log("save score");
         SaveData data = new SaveData();
         data.BestScoreUserName = BestScoreUserName;
         data.BestScore = BestScore;
@@ -58,14 +57,15 @@ public class ScoreManager : MonoBehaviour
     // Load method
     public void LoadScore()
     {
-		Debug.Log("load score");
         string path = Application.persistentDataPath + "/savefile.json";
         if (File.Exists(path))
         {
+			
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             BestScoreUserName = data.BestScoreUserName;
             BestScore = data.BestScore;
         }
+				
     }
 }

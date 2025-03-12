@@ -32,6 +32,7 @@ public class MenuUIHandler : MonoBehaviour
 	public void StartGame()
 	{
 		Debug.Log("start : " + userName.text);
+		ScoreManager.Instance.SetCurrentUserName(userName.text);
 		SceneManager.LoadScene(1);
 	}
 

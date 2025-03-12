@@ -93,12 +93,28 @@ public class MainManager : MonoBehaviour
         m_GameOver = true;
         GameOverText.SetActive(true);
 
+		PrintScore();
+
 		if(ScoreManager.Instance.BestScore <= m_Points)
 		{
+			Debug.Log("Here it is");
 			ScoreManager.Instance.SetCurrentUserToBestScore(m_Points);
 			ScoreManager.Instance.SaveScore();
 		}
+		else
+		{
+			Debug.Log("dang");
+		}
+
+		PrintScore();
     }
+
+	private void PrintScore()
+	{
+		Debug.Log("current score : " + m_Points);
+		Debug.Log("best score : " + ScoreManager.Instance.BestScore);
+		Debug.Log("best score user : " + ScoreManager.Instance.BestScoreUserName);
+	}
 
 
 

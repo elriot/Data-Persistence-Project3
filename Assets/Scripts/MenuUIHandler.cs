@@ -15,10 +15,19 @@ using TMPro;
 public class MenuUIHandler : MonoBehaviour
 {
 	public TMP_InputField userName;
+	public TMP_Text BestScoreText;
 
 	void Start()
 	{
 		// userName = GameObject.Find("NameInput").GetComponent<InputField>();
+		if(ScoreManager.Instance.BestScore >= 0 && ScoreManager.Instance.BestScoreUserName != "")
+		{
+			BestScoreText.text = "Best Score : " + ScoreManager.Instance.BestScoreUserName + " : " + ScoreManager.Instance.BestScore;
+		}
+		else
+		{
+			BestScoreText.text = "Best Score : N/A";
+		}
 	}
 	public void StartGame()
 	{
